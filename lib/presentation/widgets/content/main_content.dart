@@ -27,7 +27,7 @@ class MainContent extends StatelessWidget {
             period: 'June 2019 - Present',
             description:
                 'Developing and maintaining mobile and web applications, including a Web3 project.',
-            projects: ['Behavior Flow (Swift)'],
+            // projects: ['Behavior Flow (Swift)'],
           ),
           SizedBox(height: 32),
           SectionTitle('PROJECTS'),

@@ -13,7 +13,7 @@ class ExperienceItem extends StatelessWidget {
     required this.company,
     required this.period,
     required this.description,
-    required this.projects,
+    this.projects = const [],
   });
 
   @override
