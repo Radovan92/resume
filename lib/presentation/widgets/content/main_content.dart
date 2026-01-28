@@ -22,7 +22,7 @@ class MainContent extends StatelessWidget {
           SectionTitle('EXPERIENCE'),
           SizedBox(height: 16),
           ExperienceItem(
-            position: 'Mobile & Web Developer / Frontend Team Lead',
+            position: 'Mobile & Web Developer',
             company: 'NSWD, Novi Sad',
             period: 'June 2019 - Present',
             description:
