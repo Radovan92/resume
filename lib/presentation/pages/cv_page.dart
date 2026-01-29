@@ -8,42 +8,61 @@ class CvPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1200),
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              final isNarrow = constraints.maxWidth < 800;
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final isMobile = constraints.maxWidth < 800;
 
-              final content = Row(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  SizedBox(
-                    width: isNarrow ? constraints.maxWidth * 0.35 : 360,
-                    child: const Sidebar(),
-                  ),
-                  Expanded(
-                    child: Container(
-                      color: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 48,
-                        vertical: 40,
-                      ),
-                      child: const MainContent(),
-                    ),
-                  ),
-                ],
-              );
+          return Align(
+            alignment: Alignment.bottomLeft,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 1200),
+              child:
+                  isMobile
+                      ? _buildMobileLayout(context)
+                      : _buildDesktopLayout(context),
+            ),
+          );
+        },
+      ),
+    );
+  }
 
-              return SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height,
-                  child: content,
-                ),
-              );
-            },
+  Widget _buildMobileLayout(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Sidebar(),
+          Container(
+            color: Colors.white,
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+            child: const MainContent(),
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDesktopLayout(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(width: 360, child: Sidebar()),
+            Expanded(
+              child: Container(
+                color: Colors.white,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 48,
+                  vertical: 40,
+                ),
+                child: const MainContent(),
+              ),
+            ),
+          ],
         ),
       ),
     );

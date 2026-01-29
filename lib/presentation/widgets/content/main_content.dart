@@ -8,19 +8,21 @@ class MainContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = MediaQuery.of(context).size.width < 800;
+
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          SectionTitle('PROFILE'),
-          SizedBox(height: 8),
+        children: [
+          const SectionTitle('PROFILE'),
+          SizedBox(height: isMobile ? 6 : 8),
           Text(
             'Mobile & web developer with 5+ years of experience, working on cross-platform apps, web applications and Web3 projects.',
+            style: TextStyle(fontSize: isMobile ? 13 : 14),
           ),
-          SizedBox(height: 32),
-
-          SectionTitle('EXPERIENCE'),
-          SizedBox(height: 16),
+          SizedBox(height: isMobile ? 24 : 32),
+          const SectionTitle('EXPERIENCE'),
+          SizedBox(height: isMobile ? 12 : 16),
           ExperienceItem(
             position: 'Mobile & Web Developer',
             company: 'NSWD, Novi Sad',
@@ -29,9 +31,9 @@ class MainContent extends StatelessWidget {
                 'Developing and maintaining mobile and web applications, including a Web3 project.',
             // projects: ['Behavior Flow (Swift)'],
           ),
-          SizedBox(height: 32),
-          SectionTitle('PROJECTS'),
-          SizedBox(height: 16),
+          SizedBox(height: isMobile ? 24 : 32),
+          const SectionTitle('PROJECTS'),
+          SizedBox(height: isMobile ? 12 : 16),
           ProjectItem(
             name: 'Reenact',
             technology: 'Flutter (Android)',
@@ -44,7 +46,7 @@ class MainContent extends StatelessWidget {
               'AWS infrastructure for secure video storage and backend services',
             ],
           ),
-          SizedBox(height: 16),
+          SizedBox(height: isMobile ? 12 : 16),
           ProjectItem(
             name: 'InfoZgrada',
             technology: 'Flutter (iOS & Android)',
@@ -57,7 +59,7 @@ class MainContent extends StatelessWidget {
               'Available on Google Play and App Store',
             ],
           ),
-          SizedBox(height: 16),
+          SizedBox(height: isMobile ? 12 : 16),
           ProjectItem(
             name: 'CeDeFiAi',
             technology: 'React Web3 (Web)',
@@ -70,7 +72,7 @@ class MainContent extends StatelessWidget {
               'Frontend architecture discussions',
             ],
           ),
-          SizedBox(height: 16),
+          SizedBox(height: isMobile ? 12 : 16),
           ProjectItem(
             name: 'Cinteraction',
             technology: 'Flutter (Web)',

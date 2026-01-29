@@ -18,28 +18,50 @@ class ExperienceItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = MediaQuery.of(context).size.width < 800;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           '$position | $company',
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: isMobile ? 13 : 14,
+          ),
         ),
         const SizedBox(height: 2),
-        Text(period, style: TextStyle(color: Colors.grey[600], fontSize: 12)),
-        const SizedBox(height: 8),
-        Text(description),
+        Text(
+          period,
+          style: TextStyle(
+            color: Colors.grey[600],
+            fontSize: isMobile ? 11 : 12,
+          ),
+        ),
+        SizedBox(height: isMobile ? 6 : 8),
+        Text(description, style: TextStyle(fontSize: isMobile ? 13 : 14)),
         if (projects.isNotEmpty) ...[
-          const SizedBox(height: 8),
-          const Text(
+          SizedBox(height: isMobile ? 6 : 8),
+          Text(
             'Projects:',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: isMobile ? 13 : 14,
+            ),
           ),
           const SizedBox(height: 4),
           for (final project in projects)
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [const Text('• '), Expanded(child: Text(project))],
+              children: [
+                Text('• ', style: TextStyle(fontSize: isMobile ? 13 : 14)),
+                Expanded(
+                  child: Text(
+                    project,
+                    style: TextStyle(fontSize: isMobile ? 13 : 14),
+                  ),
+                ),
+              ],
             ),
         ],
       ],

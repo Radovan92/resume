@@ -8,7 +8,7 @@ class CvApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'My CV',
+      title: 'Radovan Kljestan - CV',
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFFF5F5F5),
         textTheme: const TextTheme(
