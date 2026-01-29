@@ -30,12 +30,17 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0'
           channel: 'stable'
           cache: true
 
+      - name: Enable web
+        run: flutter config --enable-web
+
       - name: Get dependencies
         run: flutter pub get
+
+      - name: Verify setup
+        run: flutter doctor -v
 
       # Za project pages (npr. username.github.io/resume) koristi base-href ispod.
       # Ako je repo username.github.io i želiš sajt na root, zameni sa: --base-href "/"
