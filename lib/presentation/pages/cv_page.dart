@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/sidebar/sidebar.dart';
 import '../widgets/content/main_content.dart';
+import '../widgets/download_pdf_button.dart';
 
 class CvPage extends StatelessWidget {
   const CvPage({super.key});
@@ -8,21 +9,26 @@ class CvPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          final isMobile = constraints.maxWidth < 800;
+      body: Stack(
+        children: [
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final isMobile = constraints.maxWidth < 800;
 
-          return Align(
-            alignment: Alignment.bottomLeft,
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 1200),
-              child:
-                  isMobile
-                      ? _buildMobileLayout(context)
-                      : _buildDesktopLayout(context),
-            ),
-          );
-        },
+              return Align(
+                alignment: Alignment.bottomLeft,
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 1200),
+                  child:
+                      isMobile
+                          ? _buildMobileLayout(context)
+                          : _buildDesktopLayout(context),
+                ),
+              );
+            },
+          ),
+          const Positioned(left: 20, bottom: 20, child: DownloadPdfButton()),
+        ],
       ),
     );
   }

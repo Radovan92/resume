@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../data/cv_content.dart';
 import 'sidebar_section.dart';
 import 'icon_text_row.dart';
 import 'bullet_text.dart';
@@ -29,7 +30,7 @@ class Sidebar extends StatelessWidget {
                   ),
                   SizedBox(height: isMobile ? 16 : 24),
                   Text(
-                    'Radovan Kljestan',
+                    CvContent.name,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -40,7 +41,7 @@ class Sidebar extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Mobile & Web developer',
+                    CvContent.title,
                     style: TextStyle(
                       color: Colors.grey[300],
                       fontSize: isMobile ? 12 : 14,
@@ -56,22 +57,22 @@ class Sidebar extends StatelessWidget {
               children: [
                 IconTextRow(
                   icon: Icons.email,
-                  text: 'kljestan.radovan@gmail.com',
+                  text: CvContent.email,
                   isMobile: isMobile,
                 ),
                 IconTextRow(
                   icon: Icons.phone,
-                  text: '+381 64 075 99 40',
+                  text: CvContent.phone,
                   isMobile: isMobile,
                 ),
                 IconTextRow(
                   icon: Icons.link,
-                  text: 'github.com/Radovan92',
+                  text: CvContent.github,
                   isMobile: isMobile,
                 ),
                 IconTextRow(
                   icon: Icons.location_on,
-                  text: 'Novi Sad, Serbia',
+                  text: CvContent.location,
                   isMobile: isMobile,
                 ),
               ],
@@ -81,9 +82,8 @@ class Sidebar extends StatelessWidget {
               title: 'SKILLS',
               isMobile: isMobile,
               children: [
-                BulletText('Flutter, React JS ', isMobile: isMobile),
-                BulletText('Problem solving', isMobile: isMobile),
-                BulletText('Git, Agile/Scrum', isMobile: isMobile),
+                for (final skill in CvContent.skills)
+                  BulletText(skill, isMobile: isMobile),
               ],
             ),
             SizedBox(height: isMobile ? 24 : 32),
@@ -91,8 +91,8 @@ class Sidebar extends StatelessWidget {
               title: 'LANGUAGES',
               isMobile: isMobile,
               children: [
-                BulletText('English', isMobile: isMobile),
-                BulletText('Serbian', isMobile: isMobile),
+                for (final language in CvContent.languages)
+                  BulletText(language, isMobile: isMobile),
               ],
             ),
           ],
